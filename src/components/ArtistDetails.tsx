@@ -23,7 +23,7 @@ const ArtistContainer = styled.div`
   align-items: center;
 `;
 
-const ArtistDetailsResource = unstable_createResource<string, Artist>(fetchArtistDetails);
+const ArtistDetailsResource = unstable_createResource(fetchArtistDetails);
 
 const ArtistDetails: FunctionComponent<Props> = ({ name }) => {
   const details = ArtistDetailsResource.read(name);

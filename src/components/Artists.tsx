@@ -35,7 +35,7 @@ const ArtistContainer = styled.div`
 const ArtistsResource = unstable_createResource<void, Array<IArtist>>(fetchTopArtists);
 
 const Artists: FunctionComponent<RouteComponentProps> = () => {
-  const artists = ArtistsResource.read()
+  const artists = ArtistsResource.read();
 
   return (
     <Container>
