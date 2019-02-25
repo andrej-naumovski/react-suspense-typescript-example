@@ -1,28 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FunctionComponent, Suspense } from 'react';
+import { Router } from '@reach/router';
+import Artists from './components/Artists';
+import Artist from './components/Artist';
+import { createGlobalStyle } from 'styled-components';
+import Spinner from './components/Spinner';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+const GlobalStyle = createGlobalStyle`
+  html, body, #root {
+    height: 100%;
   }
-}
+
+  body {
+    background: #BFB5AF;
+  }
+`
+
+const App: FunctionComponent<{}> = () => (
+  <>
+    <GlobalStyle />
+    <Suspense fallback={<Spinner />}>
+      <Router>
+        <Artists path="/" />
+        <Artist path="/:name" />
+      </Router>
+    </Suspense>
+  </>
+);
 
 export default App;
